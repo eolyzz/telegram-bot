@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 MONGO_URI='mongodb+srv://manhasnoname:manhasnoname@pluhg.cazsuwj.mongodb.net/telegram-bot-db?retryWrites=true&w=majority&appName=pluhg'
 //LEGRAM_TOKEN='8707634373:AAGinBq27w0yl2WfCarbbPLNNTkY0WbB6bk';
-TELEGRAM_TOKEN='8733934332:AAFthCGgtoqJqXp9tA-hB9n0zfP8t4PwviY';
+TELEGRAM_TOKEN='8604057212:AAFpuA45e04QV2V8gLrS507jZLG9TC79xKQ';
 mongoose.connect(MONGO_URI,{
   serverSelectionTimeoutMS: 30000, // 30 seconds
   connectTimeoutMS: 30000          // 30 seconds
