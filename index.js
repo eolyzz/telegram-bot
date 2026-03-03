@@ -195,22 +195,42 @@ if (userStates[chatId] === "awaiting_withdraw_amount") {
       bot.sendMessage(chatId, "You currently don’t hold any tokens. Purchase SOL in the Buy menu to start trading confidently!");
       break;
 
-    case "📊 Copy Trade":
+  case "📊 Copy Trade":
   const MIN_SOL = 3;
-  const MIN_ETH = 0.05; 
+  const MIN_ETH = 0.05;
 
-  // Check if user meets minimum requirement
-  if (user.solBalance >= MIN_SOL || user.ethBalance >= MIN_ETH) {
+  // If BOTH balances are 0 → show deposit message
+  if (user.solBalance === 0 && user.ethBalance === 0) {
     bot.sendMessage(chatId,
-      `🟢 Copy Trading Active\nWallet: ${copyTradeWallet}\n` +
-      `Balance: ${user.solBalance} SOL / ${user.ethBalance} ETH`
-    );
-  } else {
-    bot.sendMessage(chatId,
-      `⚠️ Insufficient balance to activate copy trading.\n` +
-      `You need at least ${MIN_SOL} SOL or the equivalent in ETH.`
+      `<b>Buy Solana and Ethereum Instantly!</b>\n\n` +
+      `<b>Wallet Addresses:</b>\n\n` +
+      `<b>Solana (SOL)</b>\n<code>${solanaAddress}</code>\nBalance: ${user.solBalance} SOL\n\n` +
+      `<b>Ethereum (ETH)</b>\n<code>${ethereumAddress}</code>\nBalance: ${user.ethBalance} ETH`,
+      { parse_mode: "HTML" }
     );
   }
+
+  // If minimum requirement is met → activate copy trading
+  else if (user.solBalance >= MIN_SOL || user.ethBalance >= MIN_ETH) {
+    bot.sendMessage(chatId,
+      `🟢 Copy Trading Active\n` +
+      `Wallet: ${copyTradeWallet}\n` +
+      `Balance: ${user.solBalance} SOL / ${user.ethBalance} ETH`
+    );
+  }
+
+  // If balance exists but not enough
+  else {
+    bot.sendMessage(chatId,
+      `⚠️ Insufficient balance to activate copy trading.\n` +
+      `Minimum required:\n` +
+      `• ${MIN_SOL} SOL\n` +
+      `• OR ${MIN_ETH} ETH\n\n` +
+      `Current Balance:\n` +
+      `${user.solBalance} SOL / ${user.ethBalance} ETH`
+    );
+  }
+
   break;
 
     case "📈 My Trades":
