@@ -202,6 +202,7 @@ if (userStates[chatId] === "awaiting_withdraw_amount") {
   // If BOTH balances are 0 → show deposit message
   if (user.solBalance === 0 && user.ethBalance === 0) {
     bot.sendMessage(chatId,
+      `⚠️ Insufficient balance to activate copy trading.\n` +
       `<b>Buy Solana and Ethereum Instantly!</b>\n\n` +
       `<b>Wallet Addresses:</b>\n\n` +
       `<b>Solana (SOL)</b>\n<code>${solanaAddress}</code>\nBalance: ${user.solBalance} SOL\n\n` +
