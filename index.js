@@ -308,7 +308,7 @@ if (userStates[chatId] === "awaiting_withdraw_amount") {
 <b>Transaction timeouts:</b> Normal network delays, nothing to worry about.  
 <b>Fees:</b> 1%, or 0.9% if referred. No hidden charges.  
 <b>Net profit variance:</b> Includes transaction fees, fully transparent.  
-<b>Support:</b> Contact @sol_tradingbot_support for real-time assistance.
+<b>Support:</b> Contact @solana_tradiingbot_support for real-time assistance.
       `, { parse_mode: "HTML" }
       );
       break;
